@@ -1,6 +1,13 @@
-name: Multiple Jobs 
+name: Multiple Jobs
 
-on: workflow_dispatch 
+on:
+  push:
+    branches:
+      - main
+      - "release/**"
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -8,15 +15,15 @@ jobs:
     steps:
       - name: Build Stage
         run: print("App is being build in python")
-        shell: python 
-      
+        shell: python
+
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: App Tested 
+      - name: App Tested
         run: echo "App is being tested."
-    
+
   deploy:
     runs-on: ubuntu-latest
     needs: test
