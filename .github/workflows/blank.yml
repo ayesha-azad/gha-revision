@@ -6,17 +6,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build Step
-        run: echo "Project is being build."
-        
+      - name: Build Stage
+        run: print("App is being build in python")
+        shell: python 
+      
   test:
     runs-on: ubuntu-latest
+    needs: build
     steps:
-      - name: Testing Step
-        run: echo "Project is being tested."
-        
+      - name: App Tested 
+        run: echo "App is being tested."
+    
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Deployment Step
-        run: echo "Project is being deployed."
+      - name: Deployment Stage
+        run: echo "App is being deployed."
