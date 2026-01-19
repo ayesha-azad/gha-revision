@@ -32,4 +32,4 @@ jobs:
     needs: test
     steps:
       - name: Deployment Stage
-        run: echo "App is being deployed."
+        run: echo "App is being deployed using docker password ${{ secrets.DOCKER_PASSWORD }}."
