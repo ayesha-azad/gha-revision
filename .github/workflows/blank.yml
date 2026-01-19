@@ -1,13 +1,6 @@
 name: Multiple Jobs
 
-on:
-  push:
-    branches:
-      - main
-      - "release/**"
-  pull_request:
-    branches:
-      - main
+on: workflow_dispatch
 
 jobs:
   build:
@@ -22,7 +15,7 @@ jobs:
     needs: build
     steps:
       - name: App Tested
-        run: echo "App is being tested."
+        run: echo "App is being tested by {{ vars.MY_NAME }}."
 
   deploy:
     runs-on: ubuntu-latest
