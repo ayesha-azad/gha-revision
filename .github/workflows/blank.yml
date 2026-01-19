@@ -1,10 +1,22 @@
-name: First Job
+name: Multiple Jobs 
 
 on: workflow_dispatch 
 
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello Job
-        run: echo "Hello from Ayesha Azad"
+      - name: Build Step
+        run: echo "Project is being build."
+        
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing Step
+        run: echo "Project is being tested."
+        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment Step
+        run: echo "Project is being deployed."
