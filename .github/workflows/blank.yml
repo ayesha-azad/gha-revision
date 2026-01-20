@@ -1,57 +1,57 @@
-# name: Multiple Jobs
+name: Multiple Jobs
 
-# env:
-#   APP_ENV: "dev" 
+env:
+  APP_ENV: "dev" 
   
-# on:
-#   push:
-#     branches:
-#       - main
-#       - feature
-#   pull_request:
-#     types:
-#       - opened
-#     branches:
-#       - main
-#       - feature
+on:
+  push:
+    branches:
+      - main
+      - feature
+  pull_request:
+    types:
+      - opened
+    branches:
+      - main
+      - feature
 
-# jobs:
+jobs:
 
-#   check-env:
-#     runs-on: ubuntu-latest
-#     env:
-#       APP_ENV: "build" 
-#     steps:
-#       - name: Check Env Variables
-#         env:
-#           APP_ENV: "test" 
-#         run : echo "This is $APP_ENV environment and environment variables are at different levels."
+  check-env:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: "build" 
+    steps:
+      - name: Check Env Variables
+        env:
+          APP_ENV: "test" 
+        run : echo "This is $APP_ENV environment and environment variables are at different levels."
         
-#   create:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check file
-#         uses: actions/checkout@v4
-#       - name: File Check
-#         run: cat index.html
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check file
+        uses: actions/checkout@v4
+      - name: File Check
+        run: cat index.html
 
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Build Stage
-#         run: print("App is being build in python")
-#         shell: python
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Stage
+        run: print("App is being build in python")
+        shell: python
 
-#   test:
-#     runs-on: ubuntu-latest
-#     needs: build
-#     steps:
-#       - name: App Tested
-#         run: echo "App is being tested by ${{ vars.MY_NAME }}."
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: App Tested
+        run: echo "App is being tested by ${{ vars.MY_NAME }}."
 
-#   deploy:
-#     runs-on: ubuntu-latest
-#     needs: test
-#     steps:
-#       - name: Deployment Stage
-#         run: echo "App is being deployed using docker password ${{ secrets.DOCKER_PASSWORD }}."
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deployment Stage
+        run: echo "App is being deployed using docker password ${{ secrets.DOCKER_PASSWORD }}."
