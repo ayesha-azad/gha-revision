@@ -2,7 +2,7 @@ name: If Condition
 
 on:
   push:
-    branches: [feature]
+    branches: [main]
 
 jobs:
   if-condition:
