@@ -13,6 +13,14 @@ on:
       - feature
 
 jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check file
+        uses: actions/checkout@v4
+      - name: File Check
+        run: cat index.html
+
   build:
     runs-on: ubuntu-latest
     steps:
