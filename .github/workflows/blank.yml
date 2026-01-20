@@ -1,7 +1,4 @@
 name: Multiple Jobs
-
-env:
-  APP_ENV: "dev" 
   
 on:
   push:
@@ -17,16 +14,6 @@ on:
 
 jobs:
 
-  check-env:
-    runs-on: ubuntu-latest
-    env:
-      APP_ENV: "build" 
-    steps:
-      - name: Check Env Variables
-        env:
-          APP_ENV: "test" 
-        run : echo "This is $APP_ENV environment and environment variables are at different levels."
-        
   create:
     runs-on: ubuntu-latest
     steps:
