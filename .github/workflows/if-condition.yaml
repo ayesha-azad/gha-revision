@@ -1,8 +1,6 @@
 name: If Condition
 
-on:
-  push:
-    branches: [main]
+on: push
 
 jobs:
   if-condition:
