@@ -1,0 +1,17 @@
+name: Or condition
+
+on: 
+  push:
+    branches:
+      - main
+      - feature 
+jobs:
+  or-condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "With Ayesha"
+        if: github.actor == 'Umer' || github.actor == 'Zia'
+        run: echo "This one is with Ayesha."
+      - name: "Without Ayesha"
+        if: github.actor == 'ayesha-azad'
+        run: echo "This one is without Ayesha."
