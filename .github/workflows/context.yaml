@@ -12,7 +12,7 @@ jobs:
           echo "Name of the repository is " ${{ github.repository }} 
           
       - name: "All Github Context Variables"
-        run: echo ${{ toJson(github) }}
+        run: echo "${{ toJson(github) }}"
 
       - name: "Environment Variables"
         run: | 
