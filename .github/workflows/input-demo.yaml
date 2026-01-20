@@ -1,0 +1,30 @@
+name: Checking Inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose an environment"
+        default: dev
+        type: choice
+        required: true
+        options:
+          - build
+          - test
+          - prod
+      tag:
+        description: "Choose a tag"
+        required: true
+
+jobs:
+  input-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Running Inputs"
+        run: echo "The chosen environment is " ${{ inputs.environment }}
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Tag Value"
+        run: echo "Chosen tag of the artifact is " ${{ inputs.tag }}
+        
