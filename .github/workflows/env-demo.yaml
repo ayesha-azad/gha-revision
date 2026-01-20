@@ -1,0 +1,20 @@
+name: Different Levels of Environment Variables
+
+on: 
+  push:
+    branches:
+      - main
+
+env:
+  $APP_ENV: build
+  
+jobs:
+  environment_check:
+    runs-on: ubuntu-latest
+    env:
+      $APP_ENV: test 
+    steps:
+      - name: "Checking Levels"
+        env:
+          $APP_ENV: deploy
+        run: echo "Environment in which code is running is $APP_ENV"
