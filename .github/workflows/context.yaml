@@ -1,0 +1,20 @@
+name: GitHub Context Variables and Environment Variables 
+
+on: push
+
+jobs:
+  context-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "GitHub Context Variables"
+        run: |
+          echo "Name of the runner is " ${{ github.actor }}
+          echo "Name of the repository is " ${{ github.repository }} 
+          
+      - name: "All Github Context Variables"
+        run: echo ${{ toJson(github) }}
+
+      - name: "Environment Variables"
+        run: | 
+          printenv 
+          echo $GITHUB_SHA
