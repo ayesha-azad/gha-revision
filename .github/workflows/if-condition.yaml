@@ -1,0 +1,15 @@
+name: If Condition
+
+on:
+  push:
+    branches: [feature]
+
+jobs:
+  if-condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "If Works"
+        if: github.ref == 'refs/heads/main'
+        run: echo "Commit has been made to Main branch"
+      - name: "If didn't Work"
+        run: echo "Commit has not been pushed to the main branch"
