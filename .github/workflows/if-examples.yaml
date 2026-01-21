@@ -13,7 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Code Checking
-        run: echo "Code is being statistically analysed before development environment."
+        run: |
+          echo "Code is being statistically analysed before development environment."
+          exit 1
 
   dev-check:
     if: github.ref_name == 'develop' && github.event_name == 'push'
