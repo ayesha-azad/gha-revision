@@ -13,21 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Code Checking
-        run: "Code is being statistically analysed before development environment."
+        run: echo "Code is being statistically analysed before development environment."
 
   dev-check:
     if: github.ref_name == 'develop' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Dev Checking
-        run: "Code is being run in the development environment."
+        run: echo "Code is being run in the development environment."
 
   prod-check:
     if: github.ref_name == 'main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Production Checking
-        run: "Code is being run in the production environment."
+        run: echo "Code is being run in the production environment."
 
   succes-notify:
     needs: [code-check, dev-check, prod-check]
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Success Notification
-        run: "Success notification sent to the team."
+        run: echo "Success notification sent to the team."
 
   failure-notify:
     needs: [code-check, dev-check, prod-check]
@@ -43,4 +43,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Failure Notification
-        run: "Failure notification sent to the team."
+        run: echo "Failure notification sent to the team."
