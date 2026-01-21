@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Production Checking
-        run: echo "Code is being run in the production environment."
+        run: echo "Code is being run in the production environment for being used."
 
   succes-notify:
     needs: [code-check, dev-check, prod-check]
