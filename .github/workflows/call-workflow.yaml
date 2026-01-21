@@ -1,0 +1,9 @@
+name: Call Workflow
+
+on: [push]
+
+jobs:
+  call-greetings:
+    uses: ./.github/workflows/reusable-workflow.yaml
+    with:
+      name: "Ayesha Azad"
