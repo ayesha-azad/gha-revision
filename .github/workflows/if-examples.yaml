@@ -1,0 +1,46 @@
+name: If Examples
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - features/if-condition
+
+jobs:
+  code-check:
+    if: startsWith(github.ref_name, 'features') && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code Checking
+        run: echo "Code is being statistically analysed before development environment."
+
+  dev-check:
+    if: github.ref_name == 'develop' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dev Checking
+        run: echo "Code is being run in the development environment."
+
+  prod-check:
+    if: github.ref_name == 'main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Production Checking
+        run: echo "Code is being run in the production environment for being used."
+
+  succes-notify:
+    needs: [code-check, dev-check, prod-check]
+    if: always() && !failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success Notification
+        run: echo "Success notification sent to the team."
+
+  failure-notify:
+    needs: [code-check, dev-check, prod-check]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Failure Notification
+        run: echo "Failure notification sent to the team."
