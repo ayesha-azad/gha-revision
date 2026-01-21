@@ -16,14 +16,14 @@ jobs:
         run: "Code is being statistically analysed before development environment."
 
   dev-check:
-    if: github.ref_name = 'develop' && github.event_name == 'push'
+    if: github.ref_name == 'develop' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Dev Checking
         run: "Code is being run in the development environment."
 
   prod-check:
-    if: github.ref_name = 'main' && github.event_name == 'push'
+    if: github.ref_name == 'main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Production Checking
